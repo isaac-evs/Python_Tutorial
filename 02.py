@@ -1,9 +1,9 @@
 
-n = 7
+num = 7
 
-m = ( n * (n + 1) // 2 ) 
+sum = ( num * (num + 1) // 2 ) 
 
-p = m // n
+mean = sum // num
 
-print(p) 
+print(mean) 
 
