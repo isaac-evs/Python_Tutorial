@@ -1,3 +1,5 @@
+# How code is executed
+
 r = int(input("Enter a height for your tree:"))
 
 #Leafs

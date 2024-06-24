@@ -1,3 +1,4 @@
+# Variables
 
 my_variable = 10
 

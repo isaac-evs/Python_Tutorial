@@ -1,3 +1,4 @@
+# Strings
 
 #Name
 X = "Isaac"

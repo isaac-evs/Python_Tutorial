@@ -1,3 +1,4 @@
+# Simple If statements
 
 money_avaible = 100
 
