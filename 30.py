@@ -20,4 +20,34 @@ my_string = "Yellow Yaks like yelling and yawning and yesturday they yodled whil
 
 my_list4 = [letter for letter in my_string if letter not in "a,e,i,o,u,' '"]
 
-print(my_list4)
+# 5 Get the index and the value as a tuple for items in the list
+
+item_list = ["hi", 4, 8.99, "apple", ("t","b","n")]
+
+my_list5 = {(index, item) for index, item in enumerate(item_list)}
+
+# 6 Find the common numbers in two lists (without using a tuple or set)
+
+list_a = [1, 2, 3, 4]
+list_b = [2, 3, 4, 5]
+
+my_list6 = [num for num in list_a if num in list_b]
+
+# 7 Get only the numbers in a sentence
+
+sentence = 'In 1984 there were 13 instances of a protest with over 1000 people attending'
+
+my_list7 = [letter for letter in sentence if letter.isnumeric()]
+
+# 8 Given numbers = range(20), produce a list containing the word 'even' if a number in the numbers is even, and the word 'odd' if the number is odd.
+
+my_list8 = ["even" if num % 2 == 0 else "odd" for num in range(20)]
+
+# 9 Produce a list of tuples consisting of only the matching numbers in these lists
+
+list_a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+list_b = [2, 7, 1, 12]
+
+my_list9 = [(num1, num2) for num1 in list_a for num2 in list_b if num1 == num2]
+
+print(my_list9)
