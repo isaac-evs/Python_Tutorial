@@ -28,7 +28,7 @@ hero = Hero(damage = 20, monster = monster)
 print(monster.health)
 
 
-hero.attack(20)
+hero.attack(hero.damage)
 
 
 print(monster.health)
