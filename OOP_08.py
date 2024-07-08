@@ -27,6 +27,9 @@ class PlayerCharacter(Character):
         while self.experience >= 15:
             self.level += 1
             self.experience -= 15
+            print(f"{self.name} has ascended 1 level")
+        print(f"{self.name} is now level {self.level}")
+        
 
 class NonPlayerCharacter(Character):
 
@@ -48,9 +51,60 @@ class Item:
 
 class Weapon(Item):
 
-    def __init__(self, damage, name, value)
+    def __init__(self, damage, name, value):
         self.damage = damage
         super().__init__(name, value)
 
-    def use(self, target)
-        sel.
+    def use(self, user, target):
+        target.health -= self.damage
+        print(f"{user.name} has dealth {self.damage} damage with a {self.name} to {target.name}")
+        if target.is_alive() == True:
+            print(f"{target.name.capitalize()} actual health is {target.health}")
+        else:
+            print(f"{target.name.capitalize()} is dead")
+            user.gain_experience(50)
+
+
+class Potion(Item):
+
+    def __init__(self, healing_ammount, name, value):
+        self.healing_ammount = healing_ammount
+        super().__init__(name, value)
+    
+    def use(self, target):
+        target.health += self.healing_ammount
+        print(f"{target.name} has used {self.name}, it has replenished {self.healing_ammount} health")
+        print(f"{target.name} now has {target.health} health")
+    
+
+##########################################
+
+player = PlayerCharacter(
+    level = 5, 
+    experience = 12, 
+    name = "Tom", 
+    health = 80)
+
+npc = NonPlayerCharacter(
+    dialogue = "Is dangerous to go alone! take this", 
+    name = "old man", 
+    health = 100)
+
+weapon = Weapon(
+    damage = 120,
+    name = "sword",
+    value = 1)
+
+potion = Potion(
+    healing_ammount = 10,
+    name = "blue potion",
+    value = 2)
+
+#####################################################
+
+# player uses weapon on npc 
+weapon.use(user = player, target = npc)
+
+# player uses potion to heal himself'
+potion.use(target = player)
+
