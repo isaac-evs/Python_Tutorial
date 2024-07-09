@@ -29,7 +29,7 @@ class PlayerCharacter(Character):
             self.experience -= 15
             print(f"{self.name} has ascended 1 level")
         print(f"{self.name} is now level {self.level}")
-        
+
 
 class NonPlayerCharacter(Character):
 
@@ -70,24 +70,24 @@ class Potion(Item):
     def __init__(self, healing_ammount, name, value):
         self.healing_ammount = healing_ammount
         super().__init__(name, value)
-    
+
     def use(self, target):
         target.health += self.healing_ammount
         print(f"{target.name} has used {self.name}, it has replenished {self.healing_ammount} health")
         print(f"{target.name} now has {target.health} health")
-    
+
 
 ##########################################
 
 player = PlayerCharacter(
-    level = 5, 
-    experience = 12, 
-    name = "Tom", 
+    level = 5,
+    experience = 12,
+    name = "Tom",
     health = 80)
 
 npc = NonPlayerCharacter(
-    dialogue = "Is dangerous to go alone! take this", 
-    name = "old man", 
+    dialogue = "Is dangerous to go alone! take this",
+    name = "old man",
     health = 100)
 
 weapon = Weapon(
@@ -102,9 +102,8 @@ potion = Potion(
 
 #####################################################
 
-# player uses weapon on npc 
+# player uses weapon on npc
 weapon.use(user = player, target = npc)
 
 # player uses potion to heal himself'
 potion.use(target = player)
-
