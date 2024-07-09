@@ -1,8 +1,5 @@
 # Complex Inheritance excercise
 
-from typing import Any
-
-
 class Character():
 
     def __init__(self, name, health):
@@ -16,6 +13,21 @@ class Character():
         else:
             print("invalid")
 
+class Player():
+
+    def __init__(self, level, experience, **kwargs):
+        self.level = level
+        self.experience = experience
+        super().__init__(**kwargs)
+
+    def gain_experience(self, exp):
+        self.experience += exp
+        while self.experience >= 15:
+            self.level += 1
+            self.experience -= 15
+            print(f"{self.name} has ascended 1 level")
+        print(f"{self.name} is now level {self.level}")
+        
 
 class Warrior(Character):
 
@@ -53,10 +65,10 @@ class Mage(Character):
             print(f"Not enough mana, {self.name} needs {20 - self.mana} more mana to teleport")
 
 
-class BattleMage(Warrior, Mage):
+class BattleMage(Player, Warrior, Mage):
 
-    def __init__(self, name, health, strenght, mana):
-        super().__init__(name = name, health = health, strength = strenght, mana = mana)
+    def __init__(self, level, experience, name, health, strength, mana):
+        super().__init__(level = level, experience = experience, name = name, health = health, strength = strength, mana = mana,)
 
 
 ############################################
@@ -91,8 +103,10 @@ mage.cast_spell()
 mage.teleport()
 
 #BattleMage
+print(BattleMage.mro())
 print("\n")
-battlemage = BattleMage(name = "Arthur", health = 100, strenght = 40, mana = 55)
+battlemage = BattleMage(name = "Arthur", health = 100, strength = 40, mana = 55, level = 5, experience = 12)
 battlemage.status()
 battlemage.attack()
 battlemage.teleport()
+battlemage.gain_experience(32)
