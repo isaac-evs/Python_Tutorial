@@ -36,7 +36,7 @@ class Shark(Monster, Fish):
 
 
 # mro -> method resolution order
-# print(Shark.mro())
+print(Shark.mro())
 
 
 shark = Shark(
